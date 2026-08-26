@@ -1,0 +1,31 @@
+Rules of Jsx :
+
+1.   Every component mus return a single root element .
+- We can't return multiple elements sitting side bye side 
+- They need to be rapped in a parent container 
+
+FOR EG.    we can't write <h1> </h1>  and <p> </p>    together, 
+we must bind them inside a parents container like  <div></div> , <React.fragment></React.fragment> and <> </> .
+
+
+----------------------------------------------------------------------------------------------------------------------------------
+
+2.   Every single tag must be porperly closed.
+
+FOR EG. <input/>  , <br/> etc.
+
+
+-----------------------------------------------------------------------------------------------------------------------------------
+
+3.   Attributes name must be written in CamelCase
+(since jsx is an extanstion of js, HTML attributes that conflicts with js keywords , that's why needs different names .)
+
+FOR EG.   class becomes className , <label for > becomes <label htmlFor> and many more like these 
+
+
+-----------------------------------------------------------------------------------------------------------------------------------
+
+4.   We can embed javascipt expressions directly in our markuo using curly braces .
+
+FOR EG.   const name = "peter";
+           return <h2>{name}</h2>;
