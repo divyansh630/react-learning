@@ -288,4 +288,59 @@ Here, the parent passes the handleClick function to the child as a prop.
 
 This allows the child to trigger behavior that is defined in the parent.
 
+------------------------------------------------------------------------------------------------------------------------------------
 
+5. PROPS USING REST PARAMETER
+
+---
+
+When a component receives multiple props, the rest parameter (...) can be used to collect all remaining props into an object.
+
+Example :
+function User({ name, ...rest }) {
+console.log(rest);
+return <h2>{name}</h2>;
+}
+
+function App() {
+return (
+<User name="Brian" age={22} role="Developer" />
+);
+}
+
+Here:
+
+name = "Brian"
+
+rest = {
+age: 22,
+role: "Developer"
+}
+
+The ...rest collects all remaining props into one object.
+
+-------------------------------------------------------------------------------------------------------------------------------------
+
+6. PASSING JSX AS CHILDREN 
+
+---
+
+The children prop is a special React prop that contains the content placed between the opening and closing tags of a component.
+example : 
+
+function({name, children}){
+    return(
+        <div>
+        <h2>{name}</h2>
+        <div>{children}</div>
+        </div>
+    )
+}
+
+in main app.jsx
+ <funtion name= "xyz">
+<p>any text</p>
+<p>any text</p>
+</funtion>
+
+---------------------
