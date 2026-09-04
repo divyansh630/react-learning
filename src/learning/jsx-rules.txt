@@ -343,3 +343,37 @@ in main app.jsx
 <p>any text</p>
 </funtion>
 
+-------------------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------------------
+
+# CONDITIONAL RENDERING
+
+conditional rendering is how we make our compoenents show different content based on different conditions .
+for eg : 1.) show a login button if the user is not logged in.
+         2.) show their profile if they are loggen in.
+         3.) show an error message if their's an error.
+
+=> 4 Main ways of conditional rendering :-
+1.) if statement 
+2.) ternanry operator
+3.) variables for complex logic
+4.) activity component 
+
+example :
+
+function App() {
+const isAdmin = true;
+
+return (
+    <div>
+        {isAdmin && <p>Admin Panel</p>}
+    </div>
+);
+
+}
+
+If isAdmin is true, "Admin Panel" is displayed.
+
+If isAdmin is false, nothing is displayed.
+
+Here, the && operator is used for conditional rendering.
