@@ -343,4 +343,3 @@ in main app.jsx
 <p>any text</p>
 </funtion>
 
----------------------
