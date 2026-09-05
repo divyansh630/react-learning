@@ -377,3 +377,62 @@ If isAdmin is true, "Admin Panel" is displayed.
 If isAdmin is false, nothing is displayed.
 
 Here, the && operator is used for conditional rendering.
+
+-------------------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------------------
+
+#LISTS AND KEYS 
+
+Lists:
+
+* Lists are used to render multiple elements from an array.
+* React commonly uses the JavaScript `.map()` method to render lists.
+
+Example:
+
+```jsx
+const fruits = ["Apple", "Banana", "Mango"];
+
+function App() {
+  return (
+    <ul>
+      {fruits.map((fruit) => (
+        <li key={fruit}>{fruit}</li>
+      ))}
+    </ul>
+  );
+}
+```
+
+Keys:
+
+* A `key` is a unique identifier given to each element in a React list.
+* Keys help React identify which items were added, removed, or changed.
+* Keys should be unique and stable among the list items.
+* Prefer using a unique ID from the data as a key.
+* Avoid using array index as a key when the list can change order or items can be added/removed.
+
+Example with ID:
+
+```jsx
+const users = [
+  { id: 1, name: "John" },
+  { id: 2, name: "Alice" },
+  { id: 3, name: "Bob" },
+];
+
+function App() {
+  return (
+    <ul>
+      {users.map((user) => (
+        <li key={user.id}>{user.name}</li>
+      ))}
+    </ul>
+  );
+}
+```
+
+Important:
+
+* `key` is a special React prop and is not available inside the component through `props`.
+* Do not use the same key for multiple items in the same list.
