@@ -436,3 +436,172 @@ Important:
 
 * `key` is a special React prop and is not available inside the component through `props`.
 * Do not use the same key for multiple items in the same list.
+
+-----------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------
+
+# EVENT HANDLING
+
+1. WHAT IS EVENT HANDLING?
+
+---
+
+Event handling means responding to user actions such as:
+
+* Click
+* Input
+* Submit
+* Change
+* Mouse events
+* Keyboard events
+
+React uses event handlers to perform an action when an event occurs.
+
+2. HANDLING A CLICK EVENT
+
+---
+
+Use the onClick prop to handle a button click.
+
+Example:
+
+function App() {
+const handleClick = () => {
+console.log("Button clicked");
+};
+
+```
+return <button onClick={handleClick}>Click Me</button>;
+```
+
+}
+
+Important:
+
+Use:
+
+onClick={handleClick}
+
+Not:
+
+onClick={handleClick()}
+
+The first passes the function to React.
+
+The second calls the function immediately during rendering.
+
+3. EVENT OBJECT
+
+---
+
+React automatically provides an event object to the event handler.
+
+Example:
+
+function App() {
+const handleClick = (event) => {
+console.log(event);
+};
+
+```
+return <button onClick={handleClick}>Click Me</button>;
+```
+
+}
+
+The event object contains information about the event that occurred.
+
+4. HANDLING INPUT EVENTS
+
+---
+
+The onChange event is commonly used with input fields.
+
+Example:
+
+function App() {
+const handleChange = (event) => {
+console.log(event.target.value);
+};
+
+```
+return <input onChange={handleChange} />;
+```
+
+}
+
+event.target.value gives the current value of the input.
+
+5. INLINE EVENT HANDLER
+
+---
+
+An event handler can also be written directly inside JSX.
+
+Example:
+
+<button onClick={() => console.log("Clicked")}>
+Click Me </button>
+
+This is useful for small and simple actions.
+
+6. PASSING ARGUMENTS TO EVENT HANDLERS
+
+---
+
+Use an arrow function when you need to pass an argument.
+
+Example:
+
+function App() {
+const handleClick = (name) => {
+console.log("Hello", name);
+};
+
+```
+return (
+    <button onClick={() => handleClick("Divyansh")}>
+        Click Me
+    </button>
+);
+```
+
+}
+
+7. FORM SUBMISSION
+
+---
+
+Use onSubmit to handle form submission.
+
+Example:
+
+function App() {
+const handleSubmit = (event) => {
+event.preventDefault();
+console.log("Form submitted");
+};
+
+```
+return (
+    <form onSubmit={handleSubmit}>
+        <input />
+        <button type="submit">Submit</button>
+    </form>
+);
+```
+
+}
+
+event.preventDefault() prevents the browser's default form submission behavior.
+
+## KEY POINTS
+
+1. React handles events using event props such as onClick, onChange and onSubmit.
+2. Event handlers are functions that run when an event occurs.
+3. React passes an event object to the handler.
+4. event.target refers to the element that triggered the event.
+5. event.target.value is commonly used to get input values.
+6. Use an arrow function when passing arguments to an event handler.
+7. Use event.preventDefault() to prevent default browser behavior.
+8. Event names in React use camelCase, such as onClick and onChange.
