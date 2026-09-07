@@ -7,10 +7,17 @@ import { UserIdentity } from "./props/rest_optr";
 import { Identitywrapper } from "./props/props_children";
 import { UserStatus } from "./conditional_rendering/user_status";
 import { ToppersList } from "./List_and_Keys/toppers_list";
+import { LikeBtn } from "./Handling_Events/likebtn";
 
 function App() {
   return (
     <div>
+      <br />
+      <LikeBtn />
+      <br />
+      <br />
+      <hr />
+      <br />
       <ToppersList />
       <br />
       <hr />

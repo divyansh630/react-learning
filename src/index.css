@@ -10,3 +10,7 @@ hr {
   border: none;
   border-top: 1px solid aqua;
 }
+button {
+  height: 30px;
+  width: 100px;
+}
