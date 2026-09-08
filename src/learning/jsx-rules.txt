@@ -605,3 +605,68 @@ event.preventDefault() prevents the browser's default form submission behavior.
 6. Use an arrow function when passing arguments to an event handler.
 7. Use event.preventDefault() to prevent default browser behavior.
 8. Event names in React use camelCase, such as onClick and onChange.
+
+------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------
+
+# USESTATE
+
+## What is useState?
+
+useState is a React Hook used to create and manage state in a functional component.
+
+State is data that can change during the lifetime of a component.
+When state changes, React re-renders the component and updates the UI.
+
+Syntax:
+const [state, setState] = useState(initialValue);
+
+* state → current value
+* setState → function used to update the value
+* initialValue → starting value
+
+## Example:
+
+import { useState } from "react";
+
+function Counter() {
+const [count, setCount] = useState(0);
+
+return ( <div> <p>Count: {count}</p>
+<button onClick={() => setCount(count + 1)}>
+Increase </button> </div>
+);
+}
+
+export default Counter;
+
+## How it works:
+
+1. useState(0) creates a state variable with an initial value of 0.
+2. count stores the current value.
+3. setCount() updates count.
+4. When setCount() is called, React re-renders the component.
+5. The updated value is displayed in the UI.
+
+## Important:
+
+Do not change state directly.
+
+Wrong:
+count = count + 1;
+
+Correct:
+setCount(count + 1);
+
+## Multiple states:
+
+A component can have multiple state variables.
+
+const [name, setName] = useState("");
+const [age, setAge] = useState(20);
+
+## Remember:
+
+useState is used when a changing value needs to be reflected in the UI.
+
+Without state, changing a normal variable does not cause React to re-render the UI.
