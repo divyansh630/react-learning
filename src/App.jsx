@@ -8,10 +8,16 @@ import { Identitywrapper } from "./props/props_children";
 import { UserStatus } from "./conditional_rendering/user_status";
 import { ToppersList } from "./List_and_Keys/toppers_list";
 import { LikeBtn } from "./Handling_Events/likebtn";
+import { Counterinc } from "./UseState/counter";
 
 function App() {
   return (
     <div>
+      <br />
+      <Counterinc />
+      <br />
+      <br />
+      <hr />
       <br />
       <LikeBtn />
       <br />
