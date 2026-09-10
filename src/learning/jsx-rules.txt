@@ -670,3 +670,43 @@ const [age, setAge] = useState(20);
 useState is used when a changing value needs to be reflected in the UI.
 
 Without state, changing a normal variable does not cause React to re-render the UI.
+
+-------------------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------------------
+
+# TWO GOLDER RULEDS OF HOOKS 
+
+Rule 1: Only call hooks at the top level of your function
+
+- not inside loop
+- not inside conditions
+- not inside nested functions
+- not in try/catch 
+
+Rule 2 : Only call hooks from react functions
+
+- from react components 
+- from react hooks
+
+# How State update woks :
+
+Updating the UI is a 3-phase process :
+
+- the trigger phase
+- the render phase 
+- the commit phase
+
+# Trigger Phase :
+this happens the moment you call a state function like setCount() 
+(we're not updating UI yet)
+In this we are simply telling react this components needs to be change.
+
+# Render phase : 
+
+- React calls you components 
+- React figurest out which parts of the UI , if any need to be updated 
+- But Re-running the function doesn't immidiately change whats on screen
+
+# Commit phase :
+
+React takes changes it calculated during the render phase and applies to DOM .
