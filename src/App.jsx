@@ -9,10 +9,16 @@ import { UserStatus } from "./conditional_rendering/user_status";
 import { ToppersList } from "./List_and_Keys/toppers_list";
 import { LikeBtn } from "./Handling_Events/likebtn";
 import { Counterinc } from "./UseState/counter";
+import { UserDetails } from "./UseState/using_objects";
 
 function App() {
   return (
     <div>
+      <br />
+      <UserDetails />
+      <br />
+      <br />
+      <hr />
       <br />
       <Counterinc />
       <br />
