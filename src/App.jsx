@@ -18,6 +18,9 @@ function App() {
       <br />
       <UserLoginStatus />
       <br />
+      <br />
+      <hr />
+      <br />
       <UserDetails />
       <br />
       <br />
