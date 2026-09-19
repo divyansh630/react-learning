@@ -710,3 +710,170 @@ In this we are simply telling react this components needs to be change.
 # Commit phase :
 
 React takes changes it calculated during the render phase and applies to DOM .
+
+-------------------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------------------
+
+# Batching 
+
+## What is Batching?
+
+Batching in React means React groups multiple state updates together and performs **one re-render** instead of re-rendering after every individual state update.
+
+This improves performance by reducing unnecessary re-renders.
+
+ Example :
+
+```jsx
+import { useState } from "react";
+
+function Counter() {
+  const [count, setCount] = useState(0);
+
+  const handleClick = () => {
+    setCount(count + 1);
+    setCount(count + 1);
+    setCount(count + 1);
+  };
+
+  return (
+    <>
+      <h2>{count}</h2>
+      <button onClick={handleClick}>Increase</button>
+    </>
+  );
+}
+
+export default Counter;
+```
+
+### What happens?
+
+You might expect:
+
+```text
+0 → 1 → 2 → 3
+```
+
+But the result is:
+
+```text
+0 → 1
+```
+
+React batches the three updates together, and because all three updates use the same `count` value from that render, they effectively request:
+
+```jsx
+setCount(1);
+setCount(1);
+setCount(1);
+```
+
+So the final value is `1`.
+
+---
+
+# Functional Updates with Batching
+
+When multiple state updates depend on the previous state, use the **functional updater**.
+
+```jsx
+const handleClick = () => {
+  setCount(prevCount => prevCount + 1);
+  setCount(prevCount => prevCount + 1);
+  setCount(prevCount => prevCount + 1);
+};
+```
+
+Now React processes them using the latest state:
+
+```text
+0 → 1 → 2 → 3
+```
+
+Final result:
+
+```text
+3
+```
+
+### Why?
+
+Each updater receives the result of the previous update:
+
+```text
+prevCount = 0 → 1
+prevCount = 1 → 2
+prevCount = 2 → 3
+```
+
+---
+
+## Automatic Batching in React 18+
+
+React 18 introduced **automatic batching** for updates in more situations.
+
+React can batch updates inside:
+
+* Event handlers
+* Promises
+* `setTimeout`
+* Other asynchronous callbacks
+
+Example:
+
+```jsx
+setTimeout(() => {
+  setCount(prev => prev + 1);
+  setName("Rahul");
+}, 1000);
+```
+
+React can batch these updates into a single re-render.
+
+---
+
+## Important Rule
+
+If the next state depends on the previous state, prefer the functional form:
+
+```jsx
+setCount(prev => prev + 1);
+```
+
+instead of:
+
+```jsx
+setCount(count + 1);
+```
+
+Especially when making **multiple updates** in the same event.
+
+---
+
+# Key Points :
+
+* Batching groups multiple state updates together.
+* It helps reduce unnecessary re-renders.
+* Multiple `setState` calls don't necessarily cause multiple renders.
+* Normal updates may use the same state snapshot.
+* Use functional updates when the new state depends on the previous state.
+* React 18+ provides automatic batching in asynchronous situations as well.
+
+# Comparison
+
+```jsx
+// Same snapshot → final value is 1
+setCount(count + 1);
+setCount(count + 1);
+setCount(count + 1);
+```
+
+```jsx
+// Functional updates → final value is 3
+setCount(prev => prev + 1);
+setCount(prev => prev + 1);
+setCount(prev => prev + 1);
+```
+
+
