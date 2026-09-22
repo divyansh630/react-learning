@@ -876,4 +876,70 @@ setCount(prev => prev + 1);
 setCount(prev => prev + 1);
 ```
 
+-------------------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------------------
+
+#REACT CUSTOM HOOK
+
+1. What is a Custom Hook?
+
+A custom hook is a JavaScript function used to reuse logic between React components.
+
+2. Naming
+
+Custom hooks should start with "use".
+
+Examples:
+useCounter
+useFetch
+useToggle
+
+3. File
+
+Custom hooks are usually created with a .js file.
+
+Example:
+
+customhook/
+useCounter.js
+
+4. Example
+
+import { useState } from "react";
+
+const useCounter = () => {
+const [count, setCount] = useState(0);
+
+```
+const increase = () => {
+    setCount(count + 1);
+};
+
+const decrease = () => {
+    setCount(count - 1);
+};
+
+return { count, increase, decrease };
+```
+
+};
+
+export default useCounter;
+
+5. Using the Hook
+
+const { count, increase, decrease } = useCounter();
+
+6. Main Benefit
+
+Custom hooks help us:
+
+* Reuse logic
+* Avoid repeating code
+* Keep components clean
+
+Remember:
+
+Component → UI
+Custom Hook → Reusable Logic
 
