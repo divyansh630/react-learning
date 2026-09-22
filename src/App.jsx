@@ -11,10 +11,16 @@ import { LikeBtn } from "./Handling_Events/likebtn";
 import { Counterinc } from "./UseState/counter";
 import { UserDetails } from "./UseState/using_objects";
 import { UserLoginStatus } from "./UseState/using_boolean";
+import { Counter } from "./customhooks";
 
 function App() {
   return (
     <div>
+      <br />
+      <Counter />
+      <br />
+      <br />
+      <hr />
       <br />
       <UserLoginStatus />
       <br />
